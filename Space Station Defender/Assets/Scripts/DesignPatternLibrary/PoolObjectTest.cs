@@ -6,13 +6,13 @@ using Brijen.ObjectPooling;
 public class PoolObjectTest : MonoBehaviour
 {
     [SerializeField] Transform m_parent = default;
-    [SerializeField] PoolObject m_PoolObject = default;
+    [SerializeField] PoolObject m_ObjectPrefab = default;
 
     private Pool<PoolObject> m_LocalPool = new Pool<PoolObject>();
 
     private void Awake()
     {
-        m_LocalPool.Init(m_PoolObject, m_parent);
+        m_LocalPool.Init(m_ObjectPrefab, m_parent);
         StartCoroutine(Particle());
     }
     IEnumerator Particle()
@@ -20,8 +20,9 @@ public class PoolObjectTest : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(1f);
-            var l_object = m_LocalPool.GetPoolObject();
-            l_object.transform.position = Vector3.zero;
+            PoolObject l_object = m_LocalPool.GetPoolObject();
+            yield return new WaitForSeconds(1.5f);
+            m_LocalPool.ReturnPoolObject(l_object);
         }
     }
 }

@@ -29,6 +29,7 @@ namespace Brijen.ObjectPooling
         public void ReturnPoolObject(T poolObject)
         {
             poolObject.transform.SetParent(m_PoolParent);
+            poolObject.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
             poolObject.gameObject.SetActive(false);
             m_ObjectPool.Push(poolObject);
         }
