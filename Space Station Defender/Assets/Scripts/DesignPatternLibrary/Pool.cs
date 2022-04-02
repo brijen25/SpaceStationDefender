@@ -1,18 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Brijen.ObjectPooling
 {
-    public class Pool<T> : MonoBehaviour, IPool<T> where T : MonoBehaviour, IPoolObject
+    public class Pool<T> : IPool<T> where T : MonoBehaviour, IPoolObject
     {
         private Stack<T> m_ObjectPool = new Stack<T>();
-        private T m_PoolObject = default;
+        private Func<T> m_GetFunc = default;
         private Transform m_PoolParent = default;
 
-        public void Init(T poolObject, Transform poolParent, int initializeObjectCount = 20)
+        public void Init(Func<T> poolGetFunc, Transform poolParent, int initializeObjectCount = 20)
         {
-            m_PoolObject = poolObject;
+            m_GetFunc = poolGetFunc;
             m_PoolParent = poolParent;
             for (int i = 0; i < initializeObjectCount; i++)
                 CreatePoolObject();
@@ -22,9 +23,10 @@ namespace Brijen.ObjectPooling
         {
             if (m_ObjectPool.Count == 0)
                 CreatePoolObject();
-            var l_poolObject = m_ObjectPool.Pop();
-            l_poolObject.gameObject.SetActive(true);
-            return l_poolObject;
+
+            T l_PoolObject = m_ObjectPool.Pop();
+            l_PoolObject.gameObject.SetActive(true);
+            return l_PoolObject;
         }
         public void ReturnPoolObject(T poolObject)
         {
@@ -37,7 +39,7 @@ namespace Brijen.ObjectPooling
 
         private void CreatePoolObject()
         {
-            var l_object = Instantiate(m_PoolObject, m_PoolParent);
+            T l_object = m_GetFunc.Invoke();
             l_object.gameObject.SetActive(false);
             m_ObjectPool.Push(l_object);
         }
