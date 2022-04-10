@@ -348,7 +348,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d056ee4d659d04d47ab1ebfa60620353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraOffset: {x: 0, y: 5, z: 10}
+  m_CameraOffset: {x: 0, y: 0, z: 0}
+  m_RotatePoint: {fileID: 0}
+  m_InputAction:
+    m_Name: Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 0557a6b9-0011-4f63-819c-dce0fba6ec33
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &868681438
 GameObject:
   m_ObjectHideFlags: 0

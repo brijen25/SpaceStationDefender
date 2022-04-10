@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class RotatePoint : MonoBehaviour
 {
-    private Vector3 pointToPass;
-
     public LayerMask Ground;
-
+    private Vector3 pointToPass;
 
     public Vector3 PointToPass
     {
