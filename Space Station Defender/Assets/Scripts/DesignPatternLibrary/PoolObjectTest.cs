@@ -11,8 +11,8 @@ public class PoolObjectTest : MonoBehaviour
 
     private void Awake()
     {
-        m_LocalPool.Init(GetBullet, m_parent);
-        StartCoroutine(Particle());
+        //m_LocalPool.Init(GetBullet, m_parent);
+        //StartCoroutine(Particle());
     }
     IEnumerator Particle()
     {
