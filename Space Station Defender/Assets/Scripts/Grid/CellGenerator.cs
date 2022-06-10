@@ -6,6 +6,14 @@ public class CellGenerator : MonoBehaviour
 {
     [SerializeField] private Cell m_CellPrefab = default;
 
+
+
+    private void Awake()
+    {
+        
+    }
+
+
     public Cell GetCell(Vector3 l_GridCoordinates)
     {
         Cell l_Cell = Instantiate(m_CellPrefab);
