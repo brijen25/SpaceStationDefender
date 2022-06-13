@@ -20,7 +20,7 @@ public class ThreeDGrid : MonoBehaviour
             {
                 for (int k = 0; k < l_gridSize.z; k++)
                 {
-                     m_CellGenerator.GetCell(new Vector3(i,j,k));
+                     m_CellGenerator.GetCell(new Vector3(i,j,k), transform);
                 }
             }
         }

@@ -1,11 +1,10 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private RotatePoint m_RotatePoint;
-    [SerializeField] private InputController m_InputAction;
+    //[SerializeField] private InputController m_InputAction;
      
     private float m_MoveX;
     private float m_MoveZ;
@@ -32,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(l_playerDiraction);
         }
     }
-    public void Fire(InputAction.CallbackContext context)
+    public void Fire()
     {
         Debug.Log("Fire!");
     }
