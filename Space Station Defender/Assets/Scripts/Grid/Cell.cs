@@ -13,6 +13,7 @@ public class Cell : MonoBehaviour
         X = (int)l_GridCoordinates.x;
         Y = (int)l_GridCoordinates.y;
         Z = (int)l_GridCoordinates.z;
+
         transform.position = l_GridCoordinates;
     }
 }

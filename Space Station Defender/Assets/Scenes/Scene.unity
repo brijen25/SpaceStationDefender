@@ -560,7 +560,6 @@ GameObject:
   - component: {fileID: 1417739195}
   - component: {fileID: 1417739194}
   - component: {fileID: 1417739193}
-  - component: {fileID: 1417739196}
   - component: {fileID: 1417739197}
   m_Layer: 0
   m_Name: Main Camera
@@ -634,39 +633,6 @@ Transform:
   m_Father: {fileID: 306372408}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1417739196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1417739192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 0
-  m_Cameras: []
-  m_RendererIndex: -1
-  m_VolumeLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  m_VolumeTrigger: {fileID: 0}
-  m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
-  m_AntialiasingQuality: 2
-  m_StopNaN: 0
-  m_Dithering: 0
-  m_ClearDepth: 1
-  m_AllowXRRendering: 1
-  m_RequiresDepthTexture: 0
-  m_RequiresColorTexture: 0
-  m_Version: 2
 --- !u!114 &1417739197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -681,7 +647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Target: {fileID: 1305409227}
   m_Distance: 20
-  m_MaxDistanceRange: {x: 5, y: 25}
+  m_MaxDistanceRange: {x: 1, y: 30}
   m_MoveSpeed: 0.1
   m_Offset: {x: 2.5, y: 5, z: 1.5}
 --- !u!1 &1548233017
@@ -865,20 +831,18 @@ MonoBehaviour:
   m_CameraRotate:
     m_PersistentCalls:
       m_Calls: []
-  Action:
-    m_Name: Action
-    m_Type: 0
-    m_ExpectedControlType: Axis
-    m_Id: a52f3794-838d-4b73-bd46-b384c41e0ae1
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: gamepad
-      m_Id: 4d1c09f3-1807-4910-aa1b-c9d4b9ba1b3d
-      m_Path: 1DAxis
-      m_Interactions: 
-      m_Processors: AxisDeadzone
-      m_Groups: 
-      m_Action: Action
-      m_Flags: 4
-    m_Flags: 0
+  m_CameraZoom:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1417739197}
+        m_TargetAssemblyTypeName: TopDownCameraMovement, Assembly-CSharp
+        m_MethodName: Zoom
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

@@ -47,12 +47,12 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Zoom"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""582d4b8c-bca6-4d5a-acb5-d5e059e790ea"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -112,17 +112,6 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""81ef0a25-2a83-4d19-ab7a-a2cc697edbf5"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Zoom"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
                     ""name"": ""Rotate"",
                     ""id"": ""725de569-1e69-4b57-901b-bdc608e42499"",
                     ""path"": ""1DAxis"",
@@ -154,6 +143,17 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
                     ""action"": ""Rotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""63e423a8-0756-4e88-ad6e-72a47d573dc7"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Zoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }

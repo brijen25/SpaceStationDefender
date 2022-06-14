@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class TopDownCameraMovement : MonoBehaviour
 {
-    [SerializeField] private Transform m_Target = default; 
+    [SerializeField] private Transform m_Target = default;
     [SerializeField] private float m_Distance = default;
     [SerializeField] private Vector2 m_MaxDistanceRange = default;
     [SerializeField] private float m_MoveSpeed = default;
     [SerializeField] private Vector3 m_Offset = default;
 
     private Vector3 m_MoveVecter = default;
-    void Start()
-    {
-        
-    }
+
     private void Update()
     {
         // move camera
@@ -31,5 +28,17 @@ public class TopDownCameraMovement : MonoBehaviour
     public void Move(Vector2 l_MoveVecter)
     {
         m_MoveVecter = l_MoveVecter;
+    }
+
+    public void Zoom(float l_ZoomValue)
+    {
+        if ((l_ZoomValue > 0 && m_MaxDistanceRange.x < m_Offset.y))
+        {
+            m_Offset.y -= 1f;
+        }
+        else if (m_MaxDistanceRange.y > m_Offset.y)
+        {
+            m_Offset.y += 1f;
+        }
     }
 }

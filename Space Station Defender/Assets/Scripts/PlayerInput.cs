@@ -9,12 +9,10 @@ public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private UnityEvent<Vector2> m_CameraMove = new UnityEvent<Vector2>();
     [SerializeField] private UnityEvent<float> m_CameraRotate = new UnityEvent<float>();
-    [SerializeField] private InputAction Action = default;
+    [SerializeField] private UnityEvent<float> m_CameraZoom = new UnityEvent<float>();
 
     private PlayerMap m_InputMap;
     
-
-
     private void Awake()
     {
         m_InputMap = new PlayerMap();
@@ -23,6 +21,7 @@ public class PlayerInput : MonoBehaviour
     private void OnEnable()
     {
         m_InputMap.Camera.Enable();
+        m_InputMap.Camera.Zoom.performed += ZoomInput;
     }
     private void OnDisable()
     {
@@ -35,5 +34,11 @@ public class PlayerInput : MonoBehaviour
 
         float l_Rotate = m_InputMap.Camera.Rotation.ReadValue<float>();
         m_CameraRotate.Invoke(l_Rotate);
+    }
+
+    public void ZoomInput(InputAction.CallbackContext context)
+    {
+        m_CameraZoom.Invoke(context.ReadValue<Vector2>().y);
+
     }
 }
