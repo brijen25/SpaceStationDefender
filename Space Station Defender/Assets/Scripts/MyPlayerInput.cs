@@ -4,17 +4,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using Brijen.Singleton;
 
-public class PlayerInput : MonoBehaviour
+public class MyPlayerInput : Singleton<MyPlayerInput>
 {
-    [SerializeField] private UnityEvent<Vector2> m_CameraMove = new UnityEvent<Vector2>();
-    [SerializeField] private UnityEvent<float> m_CameraRotate = new UnityEvent<float>();
-    [SerializeField] private UnityEvent<float> m_CameraZoom = new UnityEvent<float>();
+    public int go = 50;
+
+    [HideInInspector] public UnityEvent<Vector2> OnPressMove = new UnityEvent<Vector2>();
+    [HideInInspector] public UnityEvent<float> OnPressRotate = new UnityEvent<float>();
+    [HideInInspector] public UnityEvent<float> OnTriggeredZoom = new UnityEvent<float>();
 
     private PlayerMap m_InputMap;
-    
-    private void Awake()
+
+    protected override void Awake()
     {
+        base.Awake();
         m_InputMap = new PlayerMap();
     }
 
@@ -30,15 +34,15 @@ public class PlayerInput : MonoBehaviour
     private void Update()
     {
         Vector2 l_MoveValue = m_InputMap.Camera.Move.ReadValue<Vector2>();
-        m_CameraMove.Invoke(l_MoveValue);
+        OnPressMove.Invoke(l_MoveValue);
 
         float l_Rotate = m_InputMap.Camera.Rotation.ReadValue<float>();
-        m_CameraRotate.Invoke(l_Rotate);
+        OnPressRotate.Invoke(l_Rotate);
     }
 
     public void ZoomInput(InputAction.CallbackContext context)
     {
-        m_CameraZoom.Invoke(context.ReadValue<Vector2>().y);
+        OnTriggeredZoom.Invoke(context.ReadValue<Vector2>().y);
 
     }
 }

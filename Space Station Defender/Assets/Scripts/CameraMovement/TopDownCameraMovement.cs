@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TopDownCameraMovement : MonoBehaviour
@@ -11,6 +9,25 @@ public class TopDownCameraMovement : MonoBehaviour
     [SerializeField] private Vector3 m_Offset = default;
 
     private Vector3 m_MoveVecter = default;
+
+    private void Awake()
+    {
+        
+    }
+
+    private void OnEnable()
+    {
+        Debug.Log("Onenable");
+        var ll = MyPlayerInput.INSTANCE;
+        Debug.Log(ll.go);
+        ll.OnPressMove.AddListener(Move);
+        ll.OnTriggeredZoom.AddListener(Zoom);
+    }
+    private void OnDisable()
+    {
+        MyPlayerInput.INSTANCE.OnPressMove.RemoveListener(Move);
+        MyPlayerInput.INSTANCE.OnTriggeredZoom.RemoveListener(Zoom);
+    }
 
     private void Update()
     {
@@ -32,11 +49,11 @@ public class TopDownCameraMovement : MonoBehaviour
 
     public void Zoom(float l_ZoomValue)
     {
-        if ((l_ZoomValue > 0 && m_MaxDistanceRange.x < m_Offset.y))
+        if (l_ZoomValue < 0 && m_MaxDistanceRange.y > m_Offset.y)
         {
             m_Offset.y -= 1f;
         }
-        else if (m_MaxDistanceRange.y > m_Offset.y)
+        else if (m_MaxDistanceRange.x < m_Offset.y)
         {
             m_Offset.y += 1f;
         }
